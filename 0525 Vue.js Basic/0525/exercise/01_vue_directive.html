@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Directive Tutorial</title>
+</head>
+<body>
+<div id="app3">
+     <!-- v-if다음 v-else넣으려면 바로 밑줄에 붙여 써야한다. -->
+    <p v-if="seen">이제 나를 볼 수 있어요.</p>
+    <p v-else>여긴 seen이 false일 떄 보여요.</p>
+
+    <p v-if="num > 0">양수입니다.</p>
+    <p v-else-if="num < 0">음수입니다.</p>
+    <p v-else>0 입니다.</p>
+</div>
+
+<div id="app4">
+    <p>todo</p>
+    <!-- // idx는 배열의 idx -->
+    <li v-for="(todo, idx) in todos">{{todo.text}}({{idx}})</li>
+</div>
+<div id='app5'>
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">메세지 뒤집기</button>
+</div>
+
+<div id='app6'>
+    <p>input,textarea같은 입력받는 폼과 vue data와 연결시켜주는 역할</p>
+    <p>{{message}}</p>
+    <!-- input,textarea같은 입력받는 폼과 vue data와 연결시켜주는 역할 -->
+    <input type='text' v-model='message'>
+    
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app3 = new Vue({
+            el:'#app3',
+            data : {
+                seen: true,
+                num: 0,
+
+            }
+        })
+
+        var app4 = new Vue({
+            el : '#app4',
+            data : {
+                todos:[
+                    {text:'JavaScript 배우기'},
+                    {text:'Vue 배우기'},
+                    {text:'무언가 멋진 것을 배우기'},
+                    
+                ]
+            }
+        })
+        //재할당 등으로 다른 값이 들어오지 않게 하지 위해 const 사용
+        const app5 = new Vue({
+            el:'#app5',
+            data:{
+                message:'안녕하세요! Vue.js!',
+            },
+            methods:{
+                reverseMessage: function(event){
+                    //this는 Vue안의 object=해당 인스턴스를 가리킴.
+                    // this사용할거면 화살표 함수 사용하지 않고(this가 window를 가리키기 떄문) 익명함수 사용 추천. 
+                    // this 사용 안하면 화살표 함수 사용 가능
+                    console.log(event)
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+
+        })
+
+        const app6 = new Vue({
+            el:'#app6',
+            data:{
+                message:'안녕'
+            },
+        })
+    </script>
+    
+</body>
+</html>

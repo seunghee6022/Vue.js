@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <h1>Back</h1>
+        <!-- //사용할 때 함수이름만 쓴다. 함수이름을 변수명으로 쓰기 때문에 함수이름 지을 때 변수처럼(명사형) 지음. -->
+        {{getBankrrupedPeople}}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+    const app = new Vue({
+        el:'#app',
+        data : {
+            todos: [
+                {completed:true, content:hi}
+            ],
+            accounts: [
+            {name:'neo', balance : 500, isBankrruped:true},
+            {name:'tak', balance : 700, isBankrruped:false},
+            {name:'john', balance : 350, isBankrruped:false},
+            {name:'justin', balance : 200, isBankrruped:true}
+            ],
+            // bankrrupedPeople : []
+        },
+        methods: {
+            // getBankrrupedPeople : function(){
+            //     //filter는 새로운 배열을 리턴한다.
+            //     const newArr = this.accounts.filter((account) => {
+            //         return accounts.isBankrruped
+            //     })
+            //     return newArr
+            // }
+        },
+        //Data를 CUD(create,update,delete)하지 않고, Read(return)만 하고 싶을 때
+        computed : {
+            //사용할 때 함수이름만 쓴다. 함수이름을 변수명으로 쓰기 때문에 함수이름 지을 때 변수처럼(명사형)
+            //내가 원하는 조건이나 logic을 모두 여기 작성하면 된다.
+            bankrrupedPeople : function(){
+                //filter는 새로운 배열을 리턴한다.
+                const newArr = this.accounts.filter((account) => {
+                    return accounts.isBankrruped
+                })
+                return newArr
+            }
+        },
+    })
+    </script>
+</body>
+</html>

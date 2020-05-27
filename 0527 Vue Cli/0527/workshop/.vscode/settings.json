@@ -1,0 +1,5 @@
+{
+    "vetur.format.options.useTabs": true,
+    "vetur.format.scriptInitialIndent": true,
+    "vetur.format.styleInitialIndent": true
+}
