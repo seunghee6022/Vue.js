@@ -34,7 +34,9 @@ Vue.component( 'todo-item', {
 
 ```bash
 프로젝트 생성하기
-$npm create 프로젝트이름
+$vue create 프로젝트이름
+$cd 플젝이름
+$vue add router -> history (Y)
 
 서버 실행
 $npm run serve
@@ -264,6 +266,44 @@ $vue add router
 > App.vue() -> index.js(path...) ->Home.vue
 >
 > ![](C:\Users\tgb03\Desktop\Vue.js\0527 Vue Cli\Django 처럼 url 받는 순서 흐름.PNG)
+
+---
+
+### 3 steps for use (1.import-> 2.컴포넌트 등록->3.사용)
+
+```
+<template>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+     <!-- step.3 : 사용 한다. -->
+    <MyComponent msg="마이 컴포넌트 등록해보겠습니다."/>
+    <GreatComponent/>
+  </div>
+</template>
+
+<script>
+//컴포넌트 사용하기
+// step.1 : import 한다.
+import HelloWorld from './components/HelloWorld.vue'
+import MyComponent from './components/MyComponent.vue'
+import GreatComponent from './components/GreatComponent.vue'
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld,
+    // step.2 : 등록 한다.
+    MyComponent,
+    GreatComponent,
+  }
+}
+</script>
+```
+
+---
+
+
 
  1. App.vue
 
@@ -554,4 +594,5 @@ export default {
 
 * 그냥 vue cli버전과
 * vue add router를 한 router cli도 있다.
+* @ :  /src
 
