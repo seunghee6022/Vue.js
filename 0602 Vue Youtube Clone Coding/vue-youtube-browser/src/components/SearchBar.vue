@@ -1,6 +1,7 @@
 <template>
   <div>
       SearchBar
+      <br>
       <input type="text" @keypress.enter="submit">
   </div>
 </template>
