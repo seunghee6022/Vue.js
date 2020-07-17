@@ -2,7 +2,7 @@
   <div>
     <h2>Youtube Clone Coding</h2>
     <SearchBar @event-submit="onInputText"/>
-    <VideoList/>
+    <VideoList :videos='videos'/>
   </div>
 </template>
 
@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       inputValue : '',
+      videos : {},
     }
   },
   methods: {
@@ -35,11 +36,16 @@ export default {
         params: {
           q : this.inputValue,
           key : API_KEY,
+         
           part : 'snippet',
           type : 'video',
         }
       })
-      .then(res=>console.log(res.data))
+      .then(res=>{
+        console.log(res.data)
+        this.videos = res.data.items
+      
+      })
       .catch(err=>console.log(err))
     }
   }
