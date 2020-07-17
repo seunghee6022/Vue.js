@@ -36,7 +36,6 @@ export default {
         params: {
           q : this.inputValue,
           key : API_KEY,
-         
           part : 'snippet',
           type : 'video',
         }
