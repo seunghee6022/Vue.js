@@ -1,8 +1,14 @@
 <template>
-  <div>
-    <h2>Youtube Clone Coding</h2>
-    <SearchBar @event-submit="onInputText"/>
-    <VideoList :videos='videos'/>
+  <div class="d-flex flex-column black text-center">
+    <h2 class="red">Youtube Clone Coding</h2>
+    <SearchBar class="red" @event-submit="onInputText"/>
+    <div class="d-flex red">
+      <VideoDetail :video='selectedVideo' class="blue w-75"/>
+       <VideoList :videos='videos' @send-to-detail="onVideoClick" class="blue"/>
+   
+    </div>
+   
+    
   </div>
 </template>
 
@@ -10,7 +16,7 @@
 import axios from 'axios'
 import SearchBar from '@/components/SearchBar.vue'
 import VideoList from '@/components/VideoList.vue'
-
+import VideoDetail from '@/components/VideoDetail.vue'
 /* 
 .env.local 파일에 작성한 변수명이 서버 최초 실행시에
 process.env.변수명으로 자동 설정된다.
@@ -25,14 +31,18 @@ export default {
   components :{
     SearchBar,
     VideoList,
+    VideoDetail,
   },
   data() {
     return {
       inputValue : '',
       videos : {},
+      selectedVideo : {},
     }
   },
+ 
   methods: {
+   
     onInputText(inputText) {
       this.inputValue = inputText
       console.log(API_KEY)
@@ -51,11 +61,27 @@ export default {
       
       })
       .catch(err=>console.log(err))
-    }
+    },
+
+     onVideoClick(video) {
+       this.selectedVideo = video
+     }
+  
   }
 }
 </script>
 
 <style>
-
+  .black {
+    border : 5px solid black;
+  }
+  .red {
+    border : 5px solid red;
+  }
+  .blue {
+    border : 5px solid blue;
+  }
+  .green {
+    border : 5px solid green;
+  }
 </style>

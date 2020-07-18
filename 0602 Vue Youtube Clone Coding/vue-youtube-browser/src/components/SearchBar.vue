@@ -1,8 +1,7 @@
 <template>
   <div>
-      SearchBar
-      <br>
-      <input type="text" @keypress.enter="submit">
+      <input class="w-50" type="text" @keypress.enter="submit">
+      <button @click="submit">search</button>
   </div>
 </template>
 

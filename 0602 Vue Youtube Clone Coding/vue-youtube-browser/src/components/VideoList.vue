@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
-      This is VideoList
-      <br>
+  <div class="list-group">
+      
       <VideoListItem v-for="video in videos" 
       :key="video.etag"
       :video="video"
+      @send-to-detail="sendToDetail"
       />
-    {{videos}}
+   
 
   </div>
 </template>
@@ -16,12 +16,19 @@ import VideoListItem from './VideoListItem.vue'
 
 export default {
     name: 'VideoList',
-    conponents: {
+    components: {
         VideoListItem,
     },
 
     props : {
         videos : Array,
+       
+    },
+    methods : {
+      sendToDetail(video) {
+        console.log("VideoList", video.snippet.title)
+        this.$emit('send-to-detail',video)
+      }
     }
 }
 </script>
