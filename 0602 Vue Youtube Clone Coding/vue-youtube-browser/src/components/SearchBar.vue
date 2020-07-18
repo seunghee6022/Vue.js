@@ -1,7 +1,7 @@
 <template>
-  <div>
-      <input class="w-50" type="text" @keypress.enter="submit">
-      <button @click="submit">search</button>
+  <div class="inline">
+      <input class="search-bar" type="text" @keypress.enter="submit">
+      <button @click="submit" class="btn btn-danger">search</button>
   </div>
 </template>
 
@@ -21,5 +21,7 @@ export default {
 </script>
 
 <style>
-
+.search-bar {
+    width: 65%;
+}
 </style>

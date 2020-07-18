@@ -1,14 +1,11 @@
 <template>
-  <div class="list-group">
-      
+  <ul class="list-group col-lg-4 p-3">
       <VideoListItem v-for="video in videos" 
       :key="video.etag"
       :video="video"
       @send-to-detail="sendToDetail"
       />
-   
-
-  </div>
+  </ul>
 </template>
 
 <script>
@@ -26,7 +23,7 @@ export default {
     },
     methods : {
       sendToDetail(video) {
-        console.log("VideoList", video.snippet.title)
+        console.log("VideoList", video)
         this.$emit('send-to-detail',video)
       }
     }

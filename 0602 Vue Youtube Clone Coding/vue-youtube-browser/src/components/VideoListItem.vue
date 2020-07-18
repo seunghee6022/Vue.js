@@ -1,5 +1,6 @@
 <template>
-  <div class="list-group-item" @click="onSubmit">
+  <div class="list-group-item d-flex mouse" @click="onSubmit">
+      <img :src="thumbnailUrl">
       <p>{{video.snippet.title}}</p>
        
   </div>
@@ -11,6 +12,12 @@ export default {
     props : {
         video : Object,
     },
+    // 함수지만 명사형 => 결국 리턴되는 값이 사용되기 때문.
+    computed : {
+        thumbnailUrl() {
+            return this.video.snippet.thumbnails.default.url
+        }
+    },
     methods : {
         onSubmit() {
             console.log(this.video.snippet.title)
@@ -21,5 +28,7 @@ export default {
 </script>
 
 <style>
-
+.mouse:hover{
+    background-color : lightgray;
+}
 </style>

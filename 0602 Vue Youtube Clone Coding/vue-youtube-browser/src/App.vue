@@ -1,14 +1,11 @@
 <template>
-  <div class="d-flex flex-column black text-center">
+  <div class="container text-center">
     <h2 class="red">Youtube Clone Coding</h2>
     <SearchBar class="red" @event-submit="onInputText"/>
-    <div class="d-flex red">
-      <VideoDetail :video='selectedVideo' class="blue w-75"/>
-       <VideoList :videos='videos' @send-to-detail="onVideoClick" class="blue"/>
-   
+    <div class="row">
+       <VideoDetail :video='selectedVideo'/>
+       <VideoList :videos='videos' @send-to-detail="onVideoClick"/>  
     </div>
-   
-    
   </div>
 </template>
 
@@ -73,15 +70,18 @@ export default {
 
 <style>
   .black {
-    border : 5px solid black;
+    border : 2px solid lightgray;
+    /* text-align : center; */
   }
   .red {
-    border : 5px solid red;
+    /* border :2px solid red; */
+    padding : 5px;
   }
   .blue {
-    border : 5px solid blue;
+    border : 2px solid gray;
   }
   .green {
-    border : 5px solid green;
+    border : 2px solid green;
   }
+ 
 </style>
